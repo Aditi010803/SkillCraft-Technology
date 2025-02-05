@@ -1,0 +1,81 @@
+
+import java.util.Scanner;
+
+public class task1 {
+   public task1() {
+   }
+
+   public static double celsiusToFahrenheit(double var0) {
+      return var0 * 9.0 / 5.0 + 32.0;
+   }
+
+   public static double celsiusToKelvin(double var0) {
+      return var0 + 273.15;
+   }
+
+   public static double fahrenheitToCelsius(double var0) {
+      return (var0 - 32.0) * 5.0 / 9.0;
+   }
+
+   public static double fahrenheitToKelvin(double var0) {
+      return (var0 - 32.0) * 5.0 / 9.0 + 273.15;
+   }
+
+   public static double kelvinToCelsius(double var0) {
+      return var0 - 273.15;
+   }
+
+   public static double kelvinToFahrenheit(double var0) {
+      return (var0 - 273.15) * 9.0 / 5.0 + 32.0;
+   }
+
+   public static void main(String[] var0) {
+      Scanner var1 = new Scanner(System.in);
+      System.out.println("Temperature Conversion Program");
+      System.out.println("1. Celsius to Fahrenheit");
+      System.out.println("2. Celsius to Kelvin");
+      System.out.println("3. Fahrenheit to Celsius");
+      System.out.println("4. Fahrenheit to Kelvin");
+      System.out.println("5. Kelvin to Celsius");
+      System.out.println("6. Kelvin to Fahrenheit");
+      System.out.print("\nEnter the number corresponding to your choice: ");
+      int var2 = var1.nextInt();
+      double var3;
+      switch (var2) {
+         case 1:
+            System.out.print("Enter the temperature in Celsius: ");
+            var3 = var1.nextDouble();
+            System.out.println(var3 + "\u00c2\u00b0C is equal to " + celsiusToFahrenheit(var3) + "\u00c2\u00b0F");
+            break;
+         case 2:
+            System.out.print("Enter the temperature in Celsius: ");
+            var3 = var1.nextDouble();
+            System.out.println(var3 + "\u00c2\u00b0C is equal to " + celsiusToKelvin(var3) + "K");
+            break;
+         case 3:
+            System.out.print("Enter the temperature in Fahrenheit: ");
+            var3 = var1.nextDouble();
+            System.out.println(var3 + "\u00c2\u00b0F is equal to " + fahrenheitToCelsius(var3) + "\u00c2\u00b0C");
+            break;
+         case 4:
+            System.out.print("Enter the temperature in Fahrenheit: ");
+            var3 = var1.nextDouble();
+            System.out.println(var3 + "\u00c2\u00b0F is equal to " + fahrenheitToKelvin(var3) + "K");
+            break;
+         case 5:
+            System.out.print("Enter the temperature in Kelvin: ");
+            var3 = var1.nextDouble();
+            System.out.println(var3 + "K is equal to " + kelvinToCelsius(var3) + "\u00c2\u00b0C");
+            break;
+         case 6:
+            System.out.print("Enter the temperature in Kelvin: ");
+            var3 = var1.nextDouble();
+            System.out.println(var3 + "K is equal to " + kelvinToFahrenheit(var3) + "\u00c2\u00b0F");
+            break;
+         default:
+            System.out.println("Invalid choice. Please try again.");
+      }
+
+      var1.close();
+   }
+}
