@@ -1,0 +1,46 @@
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class task4 {
+    public static void main(String[] args) {
+       
+        String url = "https://www.google.com/maps";
+
+        try {
+            
+            Document doc = Jsoup.connect(url).get();
+            System.out.println("Webpage fetched successfully.");
+
+          
+            StringBuilder csvData = new StringBuilder();
+            csvData.append("Product Name,Price,Rating\n"); // CSV header
+
+           
+            Elements products = doc.select("div.product-class"); 
+            for (Element product : products) {
+                String name = product.select("h2.product-name-class").text(); 
+                String price = product.select("span.product-price-class").text(); 
+                String rating = product.select("span.product-rating-class").text(); 
+
+                
+                csvData.append(name).append(",")
+                       .append(price).append(",")
+                       .append(rating).append("\n");
+            }
+
+           
+            try (FileWriter writer = new FileWriter("products.csv")) {
+                writer.write(csvData.toString());
+                System.out.println("Data saved to 'products.csv'.");
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error fetching or processing the webpage: " + e.getMessage());
+        }
+    }
+}
